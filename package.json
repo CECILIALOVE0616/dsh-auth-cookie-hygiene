@@ -24,7 +24,8 @@
     "node": ">=22.13"
   },
   "scripts": {
-    "test": "node --test --test-isolation=none \"test/*.test.js\""
+    "test": "node --test \"test/*.test.js\"",
+    "test:sandboxed": "node --test --test-isolation=none \"test/*.test.js\""
   },
   "keywords": [
     "dsh",

@@ -83,10 +83,13 @@ npm pack            # 产出 dsh-auth-cookie-hygiene-<version>.tgz
 ## 开发与测试
 
 ```bash
-npm test    # node --test --test-isolation=none "test/*.test.js"
+npm test               # node --test "test/*.test.js"
+npm run test:sandboxed # 受限环境下关掉测试进程隔离（Node 24+ 支持）
 ```
 
-共 50 项测试，覆盖冷请求、活跃 Host 保留、v2/畸形输入、原登录头合并、401 不变、流式响应、探测超时与卸载放行，以及「无预热、无人工等待，连续 12 次重建 Host 后浏览器 Cookie jar 依然只有当前与另一个活跃 Host」。在本机用 Electron 内置 Node 24.21.0 通过测试；测试用 Node 需支持 `--test-isolation=none`（沙箱环境下子进程会 EPERM，故显式关掉 test runner 的进程隔离）。
+共 50 项测试，覆盖冷请求、活跃 Host 保留、v2/畸形输入、原登录头合并、401 不变、流式响应、探测超时与卸载放行，以及「无预热、无人工等待，连续 12 次重建 Host 后浏览器 Cookie jar 依然只有当前与另一个活跃 Host」。用 Electron 内置 Node 24.21.0 与 Node 24.22.1 均通过。
+
+如果测试环境不允许 `node --test` 派生子进程（某些沙箱里会 `spawn EPERM`），改用 `npm run test:sandboxed`，它把 runner 的进程隔离关掉，在单个进程里跑同一个 glob。
 
 模块职责：
 
