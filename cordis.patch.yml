@@ -1,0 +1,5 @@
+# dsh-auth-cookie-hygiene —— DSH bundle patch
+# 把认证 Cookie 卫生插件插入 web/desktop profile 的配置树。
+- insert:
+    - id: dsh-auth-cookie-hygiene
+      name: dsh-auth-cookie-hygiene

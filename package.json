@@ -1,0 +1,49 @@
+{
+  "name": "dsh-auth-cookie-hygiene",
+  "version": "0.1.1",
+  "description": "DSH 本地认证 Cookie 卫生插件：在本地 HTTP 响应中追加 Max-Age=0，让浏览器自动过期已停止 Host 的 dsh-auth-* Cookie。",
+  "type": "module",
+  "license": "MIT",
+  "author": "CECILIALOVE0616",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CECILIALOVE0616/dsh-auth-cookie-hygiene.git"
+  },
+  "homepage": "https://github.com/CECILIALOVE0616/dsh-auth-cookie-hygiene#readme",
+  "bugs": {
+    "url": "https://github.com/CECILIALOVE0616/dsh-auth-cookie-hygiene/issues"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "test": "node --test --test-isolation=none \"test/*.test.js\""
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "cookie",
+    "hygiene",
+    "loopback"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "REPORT.md",
+    "LICENSE",
+    "test"
+  ]
+}
